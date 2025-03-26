@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aks-helloworld
+  namespace: webapp
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+  - host: houssemdellai01.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: aks-helloworld
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
